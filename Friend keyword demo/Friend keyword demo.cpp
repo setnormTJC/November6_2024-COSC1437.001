@@ -13,12 +13,20 @@ private:
 
 public: 
 	//friend function: 
-	void demoFriendFunction();
+	friend void demoFriendFunction();
 	
 	//friend class 
-	class FriendOfPerson; 
+	friend class FriendOfPerson;
 };
 
+void demoFriendFunction()
+{
+	cout << "I am calling you, bro, at your number, which is: " << Person::phoneNumber << "\n";
+	//oops!
+}
+
+
+//friends have access to private members of a class 0
 
 int main()
 {
