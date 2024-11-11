@@ -13,15 +13,15 @@ private:
 
 public: 
 	//friend function: 
-	friend void demoFriendFunction();
+	friend void demoFriendFunction(Person friendPerson);
 	
 	//friend class 
 	friend class FriendOfPerson;
 };
 
-void demoFriendFunction()
+void demoFriendFunction(Person friendPerson)
 {
-	cout << "I am calling you, bro, at your number, which is: " << Person::phoneNumber << "\n";
+	cout << "I am calling you, bro, at your number, which is: " << friendPerson.phoneNumber << "\n";
 	//oops!
 }
 

@@ -13,11 +13,11 @@ using std::string;
 
 class AirFilterType
 {
-	int length, width, height; 
-	double price; 
+	int length, width, height;
+	double price;
 
 
-public: 
+public:
 	AirFilterType()
 	{
 
@@ -50,11 +50,11 @@ public:
 		//{
 		//	return false;
 		//}
-		 
+
 		//one-line alternative to the if/else above: 
 		return (this->price < otherAirFilter.price);
 	}
-
+	//cout << "Hello"
 	friend std::ostream& operator<<(std::ostream& os, const AirFilterType& airFilter)
 	{
 		os << "Air filter data: " << airFilter.length
@@ -68,20 +68,29 @@ public:
 	{
 		return
 			(this->height == other.height
-			&&
-			this->length == other.length
-			&&
-			this->width == other.width
-			&&
-			this->price == other.price);
+				&&
+				this->length == other.length
+				&&
+				this->width == other.width
+				&&
+				this->price == other.price);
 
 	}
 
 	void demoThis()
 	{
-		cout << "This is : " << this << "\n"; 
+		cout << "This is : " << this << "\n";
 	}
-};
+	//protected //useful for giving CHILDREN classes access to member vars (and maybe functions) 
+	friend bool compareByWidth(AirFilterType af1, AirFilterType af2); 
+
+}; //end AirFilterType class def.
+
+
+bool compareByWidth(AirFilterType af1, AirFilterType af2)
+{
+	return (af1.width < af2.width);
+}
 
 int main()
 {
@@ -90,8 +99,8 @@ int main()
 	cout << "The ADDRESS OF `someOtherAirFilter` is: " << &someOtherfilter << "\n";
 
 
-	AirFilterType expensiveAirFilter{ 20, 25, 1, 8.99 };
-	AirFilterType cheapAirFilter	{ 20, 25, 1, 8.99 };
+	AirFilterType expensiveAirFilter{ 20, 21, 1, 15.99 }; //this calls the parameterized constructor of AirFilterType class
+	AirFilterType cheapAirFilter	{ 20, 25, 1, 2.99 };
 
 	if (expensiveAirFilter == cheapAirFilter)
 	{
@@ -103,7 +112,7 @@ int main()
 		cout << "At least one attribute differs between these two air filters\n";
 	}
 
-	AirFilterType smallerAirFilter	{ 16, 20, 1, 3.99 }; 
+	AirFilterType smallerAirFilter	{ 16, 27, 1, 3.99 }; 
 	AirFilterType largerAirFilter	{ 25, 25, 1, 4.99 }; 
 
 	std::vector<AirFilterType> stackOfFilters =
@@ -115,8 +124,18 @@ int main()
 	};
 
 	//can we SORT the stack of air filters? 
-	std::sort(stackOfFilters.begin(), stackOfFilters.end());
+	std::sort(stackOfFilters.begin(), stackOfFilters.end()); //what operator did we need to overload in order
+															//for this to "work"? 
 	
+	for (auto& theCurrentAirFilter : stackOfFilters)
+	{
+		cout << theCurrentAirFilter << "\n";
+		//theCurrentAirFilter.print(); 
+	}
+	//<algorithm> 
+	std::sort(stackOfFilters.begin(), stackOfFilters.end(), compareByWidth);
+
+	cout << "\n\n\nNow sorted by WIDTH: \n";
 	for (auto& theCurrentAirFilter : stackOfFilters)
 	{
 		cout << theCurrentAirFilter << "\n";
