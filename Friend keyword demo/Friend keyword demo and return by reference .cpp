@@ -19,6 +19,9 @@ public:
 	friend class FriendOfPerson;
 };
 
+
+//friend 
+
 void demoFriendFunction(Person friendPerson)
 {
 	cout << "I am calling you, bro, at your number, which is: " << friendPerson.phoneNumber << "\n";
@@ -26,11 +29,18 @@ void demoFriendFunction(Person friendPerson)
 }
 
 
+const std::string& getProgramName()
+{
+	static const std::string programName{ "Calculator" }; // now a non-static local variable, destroyed when function ends
+
+	return programName;
+}
+
 //friends have access to private members of a class 0
 
 int main()
 {
-	Person somePerson; 
+	//Person somePerson; 
 
-
+	cout << getProgramName() << "\n";
 }

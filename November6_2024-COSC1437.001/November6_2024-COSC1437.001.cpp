@@ -55,15 +55,21 @@ public:
 		return (this->price < otherAirFilter.price);
 	}
 	//cout << "Hello"
-	friend std::ostream& operator<<(std::ostream& os, const AirFilterType& airFilter)
+	/*friend *//*std::ostream& operator<<(std::ostream& os, const AirFilterType& airFilter)
 	{
 		os << "Air filter data: " << airFilter.length
 			<< "x" << airFilter.width << "x" << airFilter.height
 			<< " inches, Price: $" << airFilter.price;
 
 		return os;
+	}*/
+
+	int getLength() const
+	{
+		return length; 
 	}
 
+	/*the overloaded equality operator*/
 	bool operator == (const AirFilterType& other)
 	{
 		return
@@ -85,6 +91,16 @@ public:
 	friend bool compareByWidth(AirFilterType af1, AirFilterType af2); 
 
 }; //end AirFilterType class def.
+
+/*MUST pass ostream by reference and RETURN BY REFERENCE ("copy constructor" in std::ostream = delete)*/
+std::ostream& operator<<(std::ostream& os, const AirFilterType& airFilter)
+{
+	os << "Air filter data: " << airFilter.getLength();
+		//<< "x" << airFilter.width << "x" << airFilter.height
+		//<< " inches, Price: $" << airFilter.price;
+
+	return os;
+}
 
 
 bool compareByWidth(AirFilterType af1, AirFilterType af2)
@@ -123,7 +139,7 @@ int main()
 		largerAirFilter
 	};
 
-	//can we SORT the stack of air filters? 
+	//can we SORT the stack of air filters? <algorithm> 
 	std::sort(stackOfFilters.begin(), stackOfFilters.end()); //what operator did we need to overload in order
 															//for this to "work"? 
 	

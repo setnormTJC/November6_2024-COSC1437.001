@@ -38,9 +38,19 @@ public:
 
 	void insert(int INDEX_AT_WHICH_TO_INSERT, T itemToInsert)
 	{
+		//if ()
+		//{
+		//	throw std::exception //we'll talk a bit about this later ...
+		//}
 		assert(INDEX_AT_WHICH_TO_INSERT < MAX_CAPACITY); //we may not remember what this is doing yet ...
 
 		theListOfThings[INDEX_AT_WHICH_TO_INSERT] = itemToInsert; 
+	}
+
+	T& operator [] (int desiredIndex)
+	{
+		return theListOfThings[desiredIndex];
+
 	}
 
 };
@@ -62,15 +72,20 @@ int main()
 	myCustomStaticArray.print(); 
 
 	//this will use the DEFAULT constructor!
-	CustomStaticArray<int, 4> firstFourPrimes;// = { 1, 3, 5, 7 }; //must use std::initializer_list for this ...
-	firstFourPrimes.insert(0, 1); //inserts 1 at index = 0 
-	firstFourPrimes.insert(1, 3); 
-	firstFourPrimes.insert(2, 5); 
-	firstFourPrimes.insert(3, 7);
+	CustomStaticArray<int, 6> somePrimes;// = { 1, 3, 5, 7 }; //must use std::initializer_list for this ...
+	somePrimes.insert(0, 1); //inserts 1 at index = 0 
+	somePrimes.insert(1, 3); 
+	somePrimes.insert(2, 5); 
+	somePrimes.insert(3, 7);
+	somePrimes.insert(4, 11);
+	somePrimes[5] = 13; 
+	somePrimes.insert(66, 2); 
 
-	firstFourPrimes.insert(4, 11);
+	//cout << "here!" << somePrimes[5] << "\n";
+
+
 	cout << "\n\n\n";
-	firstFourPrimes.print(); 
+	somePrimes.print(); 
 
 	//printSomething("asdfasdf", 1);
 	//printSomething(1, 'a');

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Friend keyword demo and return by reference .cpp">
+    <ClCompile Include="Some sorting and searching algos for our static array class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

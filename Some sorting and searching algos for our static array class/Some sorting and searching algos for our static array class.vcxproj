@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{78a6f5d0-85e1-4775-9e37-4ec790acd930}</ProjectGuid>
-    <RootNamespace>Friendkeyworddemo</RootNamespace>
+    <ProjectGuid>{4c038f78-2cee-45d6-a187-dc8b4474fed1}</ProjectGuid>
+    <RootNamespace>Somesortingandsearchingalgosforourstaticarrayclass</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Friend keyword and return by reference demo</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Friend keyword demo and return by reference .cpp" />
+    <ClCompile Include="Some sorting and searching algos for our static array class.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

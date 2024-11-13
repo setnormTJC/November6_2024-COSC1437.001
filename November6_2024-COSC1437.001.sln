@@ -5,9 +5,11 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "November6_2024-COSC1437.001", "November6_2024-COSC1437.001\November6_2024-COSC1437.001.vcxproj", "{7C6CC6B4-C85D-409D-A197-235A01C900EF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Friend keyword demo", "Friend keyword demo\Friend keyword demo.vcxproj", "{78A6F5D0-85E1-4775-9E37-4EC790ACD930}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Friend keyword and return by reference demo", "Friend keyword demo\Friend keyword demo.vcxproj", "{78A6F5D0-85E1-4775-9E37-4EC790ACD930}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nov11-writing our own static array class", "Nov11-writing our own static array class\Nov11-writing our own static array class.vcxproj", "{28FEC16D-E10E-4CB0-8B73-D29783EE7C20}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Some sorting and searching algos for our static array class", "Some sorting and searching algos for our static array class\Some sorting and searching algos for our static array class.vcxproj", "{4C038F78-2CEE-45D6-A187-DC8B4474FED1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{28FEC16D-E10E-4CB0-8B73-D29783EE7C20}.Release|x64.Build.0 = Release|x64
 		{28FEC16D-E10E-4CB0-8B73-D29783EE7C20}.Release|x86.ActiveCfg = Release|Win32
 		{28FEC16D-E10E-4CB0-8B73-D29783EE7C20}.Release|x86.Build.0 = Release|Win32
+		{4C038F78-2CEE-45D6-A187-DC8B4474FED1}.Debug|x64.ActiveCfg = Debug|x64
+		{4C038F78-2CEE-45D6-A187-DC8B4474FED1}.Debug|x64.Build.0 = Debug|x64
+		{4C038F78-2CEE-45D6-A187-DC8B4474FED1}.Debug|x86.ActiveCfg = Debug|Win32
+		{4C038F78-2CEE-45D6-A187-DC8B4474FED1}.Debug|x86.Build.0 = Debug|Win32
+		{4C038F78-2CEE-45D6-A187-DC8B4474FED1}.Release|x64.ActiveCfg = Release|x64
+		{4C038F78-2CEE-45D6-A187-DC8B4474FED1}.Release|x64.Build.0 = Release|x64
+		{4C038F78-2CEE-45D6-A187-DC8B4474FED1}.Release|x86.ActiveCfg = Release|Win32
+		{4C038F78-2CEE-45D6-A187-DC8B4474FED1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
