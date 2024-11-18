@@ -51,21 +51,76 @@ public:
 
     void sort_in_place()
     {
-        for (int redArrow = 0; redArrow < capacity - 1; ++redArrow)
+        for (int leftIndex = 0; leftIndex < capacity - 1; ++leftIndex)
         {
-            for (int greenArrow = redArrow + 1; greenArrow < capacity; ++greenArrow)
+            for (int rightIndex = leftIndex + 1; rightIndex < capacity; ++rightIndex)
             {
-                if (theListOfNumbers[greenArrow] < theListOfNumbers[redArrow])
+                if (theListOfNumbers[rightIndex] < theListOfNumbers[leftIndex])
                 {
                     //std::swap def. is similar to `ourSwap` below: 
-                    std::swap(theListOfNumbers[greenArrow], theListOfNumbers[redArrow]);
+                    std::swap(theListOfNumbers[rightIndex], theListOfNumbers[leftIndex]);
                 }
             }
         }
     }
-};
 
-void ourSwap(std::vector<int> nums, int firstIndex, int secondIndex)
+    void myShuffle()
+    {
+        for (int i = 0; i < capacity - 1; ++i)
+        {
+            int randomIndex = rand() % capacity; 
+            std::swap(theListOfNumbers[i], theListOfNumbers[randomIndex]); 
+            //std::swap(i, randomIndex)
+        }
+    }
+
+    /*
+    This is perhaps our first example of a "brute force" algorithm 
+    @returns the index at which THE FIRST (and ONLY the first) occurrence of search value occurs
+    */
+    int sequentialSearch(int valueToSearchFor)
+    {
+        for (int i = 0; i < capacity; ++i)
+        {
+            if (theListOfNumbers[i] == valueToSearchFor)
+            {
+                return i; 
+            }
+        }
+        return -1; //not in array {1, 2, 3, 4}
+    }
+
+    int binarySearch(int valueToSearchFor)
+    {
+        int low = 0; 
+        int high = capacity - 1; 
+        int mid = (high - low) / 2; 
+
+        bool found = false; 
+
+        while (low <= high && !found)
+        {
+
+            if (theListOfNumbers[mid] == valueToSearchFor)
+            {
+                found = true; 
+            }
+
+
+        }
+
+        if (found)
+        {
+            return mid; 
+        }
+        else
+        {
+            return -1; 
+        }
+    }
+}; //END of the STATIC ARRAY class def.
+
+void ourSwap(std::vector<int>& nums, int firstIndex, int secondIndex)
 {
     int tempCopy = nums[firstIndex]; 
 
@@ -80,8 +135,8 @@ int main()
 
     //ourSwap(nums, 1, 2); // -> should give -> 11, 33, 22, 44
 
-    const int N = 100;
-    StaticIntegerArray<N> someRandomNumbers;
+    const int N = 10;
+    StaticIntegerArray<N> someRandomNumbers; //{}
     //std::swap()
     //time_t result = time(0); 
 
@@ -92,7 +147,7 @@ int main()
     //someRandomNumbers.insert(3, 4);
     //someRandomNumbers.insert(4, 2);
     //someRandomNumbers.insert(5, 6);
-    srand(time(0));  
+    srand(time(0));  //"Big O Notation"
     for (int i = 0; i < N; ++i)
     {
         someRandomNumbers.insert(i, rand() % N);
@@ -107,4 +162,32 @@ int main()
     cout << "\n\nAre the numbers sorted now? \n";
 
     someRandomNumbers.print(); //should be {1, 2, 3, 4, 5, 6}? 
+
+    //now let's shuffle them
+    someRandomNumbers.myShuffle();
+    cout << "\n\nHow do the numbers look now? \n";
+    someRandomNumbers.print();
+
+
+    someRandomNumbers.sort_in_place(); 
+    someRandomNumbers.print(); 
+
+    while (true)
+    {
+        //let's search for a value supplied by the program user: 
+        cout << "Enter a number to search for in that list: \n";
+        int numberToSearchFor;
+        std::cin >> numberToSearchFor;
+
+        //int foundPosition = someRandomNumbers.sequentialSearch(numberToSearchFor);
+
+        int foundPosition = someRandomNumbers.binarySearch(numberToSearchFor);
+
+        cout << "That value was? found at index = " << foundPosition << "\n";
+
+    }
+ 
+
+
+
 }
