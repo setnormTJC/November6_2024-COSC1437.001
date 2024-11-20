@@ -90,28 +90,86 @@ public:
         return -1; //not in array {1, 2, 3, 4}
     }
 
+    int copilotBinarySearch(int valueToSearchFor)
+    {
+        int lowIndex = 0;
+        int highIndex = capacity - 1;
+        int currentSearchIndex = (highIndex - lowIndex) / 2;
+
+        bool found = false;
+
+        while (lowIndex <= highIndex && !found)
+        {
+            currentSearchIndex = lowIndex + (highIndex - lowIndex) / 2;
+            if (theListOfNumbers[currentSearchIndex] == valueToSearchFor)
+            {
+                found = true;
+            }
+            else if (theListOfNumbers[currentSearchIndex] > valueToSearchFor)
+            {
+                highIndex = currentSearchIndex - 1;
+            }
+            else
+            {
+                lowIndex = currentSearchIndex + 1;
+            }
+        }
+
+        if (found)
+        {
+            return currentSearchIndex;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    /*
+    @returns the INDEX at which the FIRST (and ONLY the first) occurrence of `valueToSearchFor` occurs
+    */
     int binarySearch(int valueToSearchFor)
     {
-        int low = 0; 
-        int high = capacity - 1; 
-        int mid = (high - low) / 2; 
+        int lowIndex = 0; 
+        int highIndex = capacity - 1; 
+        int currentSearchIndex = (highIndex - lowIndex) / 2; 
 
         bool found = false; 
 
-        while (low <= high && !found)
+        while (lowIndex </*=*/ highIndex && !found) //T and T -> T (but T OR F -> T, and F and T -> F, and F and F -> F)
         {
-
-            if (theListOfNumbers[mid] == valueToSearchFor)
+            currentSearchIndex = currentSearchIndex + (highIndex - lowIndex) / 2; 
+            if (theListOfNumbers[currentSearchIndex] == valueToSearchFor)
             {
+
                 found = true; 
             }
+                        //ex: 50 > 27
+            else if (theListOfNumbers[currentSearchIndex] > valueToSearchFor)
+            {
+                //stuff
+                highIndex = currentSearchIndex - 1; 
 
+            }
+
+            else //(theListOfNumbers[currentSearchIndex] < valueToSearchFor)
+            {
+                lowIndex = currentSearchIndex + 1;
+            }
+            //if (found)
+            //{
+            //    return currentSearchIndex;
+            //}
+            //else
+            //{
+            //    return -1;
+            //}
 
         }
 
         if (found)
         {
-            return mid; 
+            return currentSearchIndex; 
         }
         else
         {
@@ -119,6 +177,9 @@ public:
         }
     }
 }; //END of the STATIC ARRAY class def.
+
+
+
 
 void ourSwap(std::vector<int>& nums, int firstIndex, int secondIndex)
 {
@@ -137,6 +198,7 @@ int main()
 
     const int N = 10;
     StaticIntegerArray<N> someRandomNumbers; //{}
+
     //std::swap()
     //time_t result = time(0); 
 
@@ -147,30 +209,32 @@ int main()
     //someRandomNumbers.insert(3, 4);
     //someRandomNumbers.insert(4, 2);
     //someRandomNumbers.insert(5, 6);
-    srand(time(0));  //"Big O Notation"
+    
+    srand(time(0));  //"Big O Notation" O(N) -> O(log2(N)) -> e^x
+
     for (int i = 0; i < N; ++i)
     {
         someRandomNumbers.insert(i, rand() % N);
     };
 
     someRandomNumbers.print(); 
-    cout << std::boolalpha; //displays true instead of 1 and false instead of 0
-    cout << "Is it in ascending order? " << someRandomNumbers.isInAscendingOrder() << "\n";
+    //cout << std::boolalpha; //displays true instead of 1 and false instead of 0
+    //cout << "Is it in ascending order? " << someRandomNumbers.isInAscendingOrder() << "\n";
 
-    //let's write a binary search algorithm and a "bubble" sort algorithm 
+    ////let's write a binary search algorithm and a "bubble" sort algorithm 
     someRandomNumbers.sort_in_place(); 
-    cout << "\n\nAre the numbers sorted now? \n";
+    //cout << "\n\nAre the numbers sorted now? \n";
 
     someRandomNumbers.print(); //should be {1, 2, 3, 4, 5, 6}? 
 
-    //now let's shuffle them
-    someRandomNumbers.myShuffle();
-    cout << "\n\nHow do the numbers look now? \n";
-    someRandomNumbers.print();
+    ////now let's shuffle them
+    //someRandomNumbers.myShuffle();
+    //cout << "\n\nHow do the numbers look now? \n";
+    //someRandomNumbers.print();
 
 
-    someRandomNumbers.sort_in_place(); 
-    someRandomNumbers.print(); 
+    //someRandomNumbers.sort_in_place(); 
+    //someRandomNumbers.print(); 
 
     while (true)
     {
@@ -181,13 +245,11 @@ int main()
 
         //int foundPosition = someRandomNumbers.sequentialSearch(numberToSearchFor);
 
-        int foundPosition = someRandomNumbers.binarySearch(numberToSearchFor);
+        int foundPosition = someRandomNumbers.copilotBinarySearch(numberToSearchFor);
+
 
         cout << "That value was? found at index = " << foundPosition << "\n";
 
     }
- 
-
-
 
 }
