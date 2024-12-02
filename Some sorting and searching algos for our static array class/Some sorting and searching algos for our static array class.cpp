@@ -217,6 +217,8 @@ int main()
         someRandomNumbers.insert(i, rand() % N);
     };
 
+
+    //try throw catch 
     someRandomNumbers.print(); 
     //cout << std::boolalpha; //displays true instead of 1 and false instead of 0
     //cout << "Is it in ascending order? " << someRandomNumbers.isInAscendingOrder() << "\n";
